@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  android: circleci/android@3.0.2
+
+jobs:
+  build-and-test:
+    executor:
+      name: android/android-machine
+      tag: default
+    steps:
+      - checkout
+      - run:
+          name: Grant Gradle permission
+          command: chmod +x gradlew
+      - run:
+          name: Build Android project
+          command: ./gradlew assembleDebug
+      - run:
+          name: Run unit tests
+          command: ./gradlew testDebugUnitTest
+
+workflows:
+  build-and-test:
+    jobs:
+      - build-and-test
