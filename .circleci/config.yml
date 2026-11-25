@@ -1,13 +1,11 @@
 version: 2.1
 
-orbs:
-  android: circleci/android@3.0.2
-
 jobs:
   android-build:
-    executor:
-      name: android/android-machine-executor
-      tag: default
+    machine:
+      image: android:default
+    resource_class: large
+
     steps:
       - checkout
 
