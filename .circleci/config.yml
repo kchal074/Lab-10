@@ -6,7 +6,7 @@ orbs:
 jobs:
   android-build:
     executor:
-      name: android/android-machine
+      name: android/android-machine-executor
       tag: default
     steps:
       - checkout
